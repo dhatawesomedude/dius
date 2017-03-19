@@ -17,23 +17,23 @@ const add_to_cart = (state, sku) => {
         state.items = [...state.items, new_products.new_vga_adapter()];
 };
 
+const sub_total = (state) => {
+    for (let value of state.items) {
+        state.sub_total_amount += value.price;
+        state.total_amount += value.price;
+    }
+};
+
 const scanner = (state) => {
     return {
         scan: (sku) => {
             add_to_cart(state, sku);
         },
-        sub_total: () => {
-            for (let value of state.items) {
-                state.sub_total_amount += value.price;
-                state.total_amount += value.price;
-            }
-        },
-        total: (co) => {
-            co.sub_total();
-            co.apply_price_break();
-            co.apply_free_accessory();
-            co.apply_clearance_deals();
-            console.log(apply_price_break);
+        total: () => {
+            sub_total(state);
+            discounts.apply_price_break(state);
+            discounts.apply_free_accessory(state);
+            discounts.apply_clearance_deals(state);
             return state.total_amount;
         }
     }
@@ -49,11 +49,9 @@ const checkout = (pricing_rules) => {
         pricing_rules: pricing_rules
     };
 
+
     return Object.assign(
         {},
-        discounts.free_accessory_discount(state),
-        discounts.price_break_discount(state),
-        discounts.clearance_deals(state),
         scanner(state)
     )
 };
@@ -81,6 +79,7 @@ co.scan('atv');
 //co.apply_price_break();
 //co.apply_free_accessory();
 //co.apply_clearance_deals();
-co.total(co);
+//console.log(co);
+co.total();
 //co.apply_price_break();
 //console.log(co.state);
