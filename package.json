@@ -1,0 +1,11 @@
+{
+  "name": "checkoutdius",
+  "version": "1.0.0",
+  "description": "checkout system",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Orlando Adeyemi",
+  "license": "ISC"
+}

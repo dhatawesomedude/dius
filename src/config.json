@@ -1,0 +1,40 @@
+{
+  "products" : {
+    "ipd": {
+      "sku" : "ipd",
+      "name" : "Super iPad",
+      "price" : 549.99
+    },
+    "mbp": {
+      "sku" : "mbp",
+      "name" : "MacBook Pro",
+      "price" : 1399.99
+    },
+    "atv": {
+      "sku" : "atv",
+      "name" : "Apple TV",
+      "price" : 109.50
+    },
+    "vga": {
+      "sku" : "vga",
+      "name" : "VGA adapter",
+      "price" : 30.00
+    }
+  },
+  "pricing_rules" : {
+    "price_break" : [{
+      "sku" : "ipd",
+      "discount" : 50.00,
+      "min_count" : 4
+    }],
+    "free_accessory" : [{
+      "sku" : "mbp",
+      "accessory_sku" : "vga"
+    }],
+    "deals" : [{
+      "sku" : "atv",
+      "min_units" : 3,
+      "no_discounted_units" : 1
+    }]
+  }
+}
