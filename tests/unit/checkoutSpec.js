@@ -1,9 +1,6 @@
 /**
  * Created by orlandoadeyemi on 19/03/2017.
  */
-/**
- * Created by orlandoadeyemi on 19/03/2017.
- */
 
 const expect = require('chai').expect;
 const checkout = require('../../src/Checkout');

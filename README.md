@@ -13,7 +13,7 @@
 
 ## Tests
 This project uses mocha test runner and istanbul for test coverage
-* run `npm tests`. 
+* run `npm test`. 
 * coverage reports are stored in the `coverage` directory.
 
 ## Pricing rule configuration
