@@ -7,11 +7,11 @@ const discounts = () => {
             let min_count = state.pricing_rules.price_break[0].min_count;
             let discount = state.pricing_rules.price_break[0].discount;
             let count = utils.count_items_with_sku([...state.items], sku);
-            console.log(count);
             if (count > min_count) {
                 let discounted_amount = (count * discount);
                 utils.update_amount_after_discount(state, discounted_amount);
             }
+            return Object.assign({}, state)
         },
 
         apply_free_accessory: (state) => {
@@ -28,7 +28,7 @@ const discounts = () => {
                 discounted_amount = accessory_count * accessory_unit_price;
             utils.update_amount_after_discount(state, discounted_amount);
 
-
+            return Object.assign({}, state)
         },
 
         apply_clearance_deals: (state) => {
@@ -41,6 +41,7 @@ const discounts = () => {
             utils.update_amount_after_discount(state, discounted_amount);
             console.log(state.total_amount);
 
+            return Object.assign({}, state)
         }
     }
 };
