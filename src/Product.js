@@ -4,12 +4,14 @@
 "use strict";
 
 const products = require('./config.json').products;
+const utils = require('./utils.js');
+const throw_if_no = utils.throw_if_no;
 
 const sku = {sku: 'A1'};
 const name = {name: 'a'};
 const price = {price: 1};
 
-const product = (_sku, _name, _price) => {
+const product = (_sku = throw_if_no`sku`, _name = throw_if_no`name`, _price = throw_if_no`price`) => {
     let state = {
         sku: _sku,
         name: _name,
@@ -18,15 +20,5 @@ const product = (_sku, _name, _price) => {
     return Object.assign({}, sku, name, price, state)
 };
 
-const new_products = () => {
-    return {
-        new_i_pad: () => product(products.ipd.sku, products.ipd.name, products.ipd.price),
 
-        new_mac_book: () => product(products.mbp.sku, products.mbp.name, products.mbp.price),
-
-        new_apple_tv: () => product(products.atv.sku, products.atv.name, products.atv.price),
-
-        new_vga_adapter: () => product(products.vga.sku, products.vga.name, products.vga.price)
-    }
-};
-module.exports = new_products;
+module.exports = product;
