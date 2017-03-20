@@ -39,7 +39,6 @@ const discounts = () => {
             let count = utils.count_items_with_sku([...state.items], sku);
             let discounted_amount = Math.floor(count / min_units) * no_discounted_units * unit_price;
             utils.update_amount_after_discount(state, discounted_amount);
-            console.log(state.total_amount);
 
             return Object.assign({}, state)
         }

@@ -30,7 +30,6 @@ describe('Checkout', () => {
     it('should return a checkout instance with scan and total methods', (done) => {
 
         const co = checkout(pricing_rules);
-        console.log(co);
 
         expect(co).to.haveOwnProperty('scan');
         expect(co).to.haveOwnProperty('total');
