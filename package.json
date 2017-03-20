@@ -2,7 +2,7 @@
   "name": "checkoutdius",
   "version": "1.0.0",
   "description": "checkout system",
-  "main": "index.js",
+  "main": "src/Checkout.js",
   "scripts": {
     "test": "nyc _mocha --recursive tests",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
