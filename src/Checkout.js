@@ -2,8 +2,10 @@
  * Created by orlandoadeyemi on 19/03/2017.
  */
 
+const utils = require('./utils.js')();
 const discounts = require('./Discounts.js')();
-const new_products = require('./Product.js')();
+const new_products = utils.new_products();
+const throw_if_no = utils.throw_if_no;
 const pricing_rules = require('./config.json').pricing_rules;
 
 const add_to_cart = (state, sku) => {
@@ -28,6 +30,7 @@ const scanner = (state) => {
     return {
         scan: (sku) => {
             add_to_cart(state, sku);
+            return [...state.items];
         },
         total: () => {
             sub_total(state);
@@ -39,7 +42,7 @@ const scanner = (state) => {
     }
 };
 
-const checkout = (pricing_rules) => {
+const checkout = (pricing_rules=throw_if_no`pricing_rules`) => {
 
     let state = {
         items: [],
@@ -56,30 +59,3 @@ const checkout = (pricing_rules) => {
     )
 };
 module.exports = checkout;
-
-let co = checkout(pricing_rules);
-/*co.scan('atv');
- co.scan('ipd');
- co.scan('atv');
- co.scan('ipd');
- co.scan('ipd');
- co.scan('ipd');
- co.scan('ipd');*/
-//co.scan('mbp');
-//co.scan('vga');
-//co.scan('ipd');
-co.scan('atv');
-/*co.scan('atv');
- co.scan('atv');
- co.scan('atv');
- co.scan('atv');
- co.scan('atv');
- co.scan('atv');*/
-//co.sub_total();
-//co.apply_price_break();
-//co.apply_free_accessory();
-//co.apply_clearance_deals();
-//console.log(co);
-co.total();
-//co.apply_price_break();
-//console.log(co.state);
