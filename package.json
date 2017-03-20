@@ -4,8 +4,14 @@
   "description": "checkout system",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "nyc --reporter=html _mocha --recursive tests"
   },
   "author": "Orlando Adeyemi",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-as-promised": "^5.3.0",
+    "mocha": "^3.0.2",
+    "nyc": "^10.1.2"
+  }
 }
